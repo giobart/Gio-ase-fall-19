@@ -14,25 +14,20 @@ def sum(m, n):
 
 def divide(m, n):
     result = 0
-    sign1 = 1
-    sign2 = 1
+    negativeResult = m < 0 and n > 0 or m > 0 and n < 0
 
-    if(m < 0):
-        sign1 = -1
-        m = abs(m)
+    m = abs(m)
+    n = abs(n)
 
-    if(n < 0):
-        sign2 = -1
-        n = abs(n)
+    if(n == 0):
+        raise ZeroDivisionError("")
 
-    sign1 = sign1 * sign2
-
-    while(m > 0):
+    while(m - n >= 0):
         m -= n
-        if(m >= 0):
-            result += 1
+        result += 1
 
-    return result * sign1
+    result = -result if negativeResult else result
+    return result
 
 
 def sub(m, n):
